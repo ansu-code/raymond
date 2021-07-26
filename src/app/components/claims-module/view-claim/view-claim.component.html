@@ -1,0 +1,387 @@
+<p-card>
+    <div class="p-grid">
+        <!-- <p-header class="p-col-12 p-pt-0 p-pb-0 header-title">
+            Marine claims
+        </p-header> -->
+        <div class="p-col-12 p-lg-2 p-md-4 p-sm-12 p-pt-0 p-pb-0 dropselection">
+            <p-dropdown [options]="claims" [(ngModel)]="selectedClaim" (onChange)="onClaimsChange()" 
+                optionLabel="label"></p-dropdown>
+        </div>
+        <p-header class="p-col-12 p-pt-0 p-pb-0 subheading">
+            Download or receive the filtered data.
+        </p-header>
+        <div class="p-col-12" style="position:relative;">
+            <button pButton type="button" label="Download xls" (click)="dt.exportCSV()" class="btnCss downloadBtn poscss p-mr-2 p-mt-4">
+            </button>
+            <button pButton type="button" label="Register a {{selectedClaimType}}" (click)="registerClaim()"
+                class="btnCss downloadBtn regposs p-mr-2 p-mt-4"> </button>
+
+            <p-accordion>
+                <!--  <p-accordionTab class="dataFilter" header="Data filters">
+                    <div class="p-grid">
+                        <div class="cardSection">
+                            <p-card>
+                              
+                                
+                                <div class="p-grid p-col-12 p-pl-0">
+                                    <div class="p-col-12 p-md-4 p-sm-12">
+                                        <label for="firstname">Field name</label>
+                                        <p-dropdown optionLabel="name"></p-dropdown>
+                                    </div>
+                                    <div class="p-col-12 p-md-4 p-sm-12">
+                                        <label for="lastname">Condition</label>
+                                        <p-dropdown optionLabel="name"></p-dropdown>
+                                    </div>
+                                  
+                                    <div class="p-col-12 p-md-4 p-sm-10">
+                                        <label for="lastname">Comparison</label>
+                                        <input id="fieldId" type="text" pInputText>
+                                    </div>
+                                   
+                                </div>
+                    
+                                <div class="p-grid p-col-12" style="display: inline;">
+                                    <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Add"
+                                        class="btnCss addBtn p-mr-2"> </button>
+                                    <button pButton type="button" class="btnCss submitBtn" label="Submit"></button>
+                                </div>
+                            </p-card>
+                        </div>
+                    </div> 
+                </p-accordionTab>       -->
+                <p-accordionTab class="specialFilter" header="Special filters">
+                    <div class="p-grid">
+                        <div class="cardSection">
+                            <p-card class="marT20">
+
+                                <div class="p-grid p-col-12 p-pl-0">
+                                    <div class="dynamicCtrlWrap">
+                                        <div class="p-col-12 p-md-4 p-sm-12">
+                                            <label for="firstname">Field name</label>
+                                            <p-dropdown [options]="fieldsList" optionValue="name" optionLabel="name" placeholder="Select field type"></p-dropdown>
+                                        </div>
+                                        <div class="p-col-12 p-md-4 p-sm-12">
+                                            <label for="lastname">From date</label>
+                                            <p-calendar [(ngModel)]="value" [showIcon]="true" class="calanderIcon">
+                                            </p-calendar>
+                                        </div>
+
+                                        <div class="p-col-12 p-md-4 p-sm-12">
+                                            <label for="lastname">To date</label>
+                                            <p-calendar [(ngModel)]="value" [showIcon]="true" class="calanderIcon">
+                                            </p-calendar>
+                                        </div>
+                                    </div>
+                                    <div class="removeWrapperDiv diagnosisRemove">
+                                        <i class="pi pi-times closeIcon_marginT"></i>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="p-grid p-col-12 p-pl-0">
+                                    <div class="dynamicCtrlWrap">
+                                        <div class="p-col-12 p-md-4 p-sm-12">
+                                            <label for="firstname">Field name</label>
+                                            <p-dropdown [options]="fieldsList" optionValue="name" optionLabel="name" placeholder="Select field type"></p-dropdown>
+                                        </div>
+                                        <div class="p-col-12 p-md-4 p-sm-12">
+                                            <label for="lastname">Condition</label>
+                                            <p-dropdown [options]="conditionsList" optionValue="value" optionLabel="label" placeholder="Select condition"></p-dropdown>
+                                        </div>
+
+                                        <div class="p-col-12 p-md-4 p-sm-12">
+                                            <label for="lastname">Comparison</label>
+                                            <input id="fieldId" type="text" pInputText>
+                                        </div>
+                                    </div>
+                                    <div class="removeWrapperDiv diagnosisRemove">
+                                        <i class="pi pi-times closeIcon_marginT"></i>
+                                    </div>
+                                </div> -->
+
+                                <div class="p-grid p-col-12" style="display: inline;">
+                                    <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Add"
+                                        class="btnCss addBtn p-mr-2"> </button>
+                                    <button pButton type="button" class="btnCss submitBtn" label="Submit"></button>
+                                </div>
+                            </p-card>
+                        </div>
+                    </div>
+                </p-accordionTab>
+            </p-accordion>
+
+        </div>
+    </div>
+
+</p-card>
+
+<p-card>
+    <div class="p-col-12 r_fontsize p-p-0">
+        <p-table #dt [exportFilename]="exportName" [columns]="selectedColumnsList" [value]="claimsList" styleClass="p-datatable-sm p-datatable-striped"
+            [scrollable]="true" editMode="row" dataKey="id" [style]="{width:'100%'}" [globalFilterFields]="globalFilters" [rows]="10"
+            [paginator]="true" [showCurrentPageReport]="true" [(first)]="first"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [rowsPerPageOptions]="[10,20,30,40,50]" sortMode="multiple" [scrollable]="true" [style]="{width:'100%'}">
+            <ng-template pTemplate="caption">
+                <div class="p-grid">
+                    <div class="p-col-12 p-lg-4 p-md-6 p-sm-12 p-pb-0">
+                        <div class="p-col-12 p-pb-0">
+                            <!-- <button pButton type="button" label="Claim Intimation" pAddRow [table]="dt"
+                                [newRow]="newRow()" class="btnCss newrowBtn"> </button> -->
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-lg-8 p-md-6 p-sm-12 p-pr-0 p-pb-0">
+                        <div class="p-grid p-col-12 p-jc-end">
+                            <!-- <div class="p-col-6 p-lg-6 p-md-6 p-sm-6 p-pb-0" *ngIf="claimTypeLabel">
+                                <h4>{{selectedClaimType}} - {{claimTypeLabel}}</h4>
+                            </div> -->
+                            <div class="p-col-12 p-lg-6 p-md-6 p-sm-6 p-pb-0">
+                                <p-multiSelect [options]="columnsList" [(ngModel)]="selectedColumnsList" optionLabel="header"
+                                optionValue="header" placeholder="Toggle columns">
+                                </p-multiSelect>
+                            </div>
+                            <div class="p-col-12 p-lg-6 p-md-6 p-sm-6 p-pb-0">
+                                <div class="p-inputgroup">
+                                    <input type="text" pInputText placeholder="Search"
+                                        (input)="dt.filterGlobal($event.target.value, 'contains')">
+                                    <button type="button" pButton pRipple icon="pi pi-search"
+                                        class="btnCss searchbtn"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template> 
+            <!-- <ng-template pTemplate="colgroup" let-columns>
+                <colgroup>
+                    <col style="width:100px">
+                    <col style="width:70px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                    <col style="width:100px">
+                </colgroup>
+            </ng-template> -->
+            <ng-template pTemplate="header" let-columns>
+                <tr *ngIf=columns>
+                    <!-- <th style="text-align: center;" style="width:80px">Action</th> -->
+                    <th style="width:80px">View</th>
+                    <!-- <th>Insurer's Claim Number</th>
+                    <th>Date of Loss</th>
+                    <th>Claim Description</th>
+                    <th>Loss Estimate or Claim Amount (INR)</th>
+                    <th>Net Premium (INR)</th>
+                    <th>Initiator's BU</th>
+                    <th>Profit Centre</th>
+                    <th>Company</th>
+                    <th>Initiator's Name</th>
+                    <th>Status</th> -->
+                    <th *ngFor="let col of columns" style="width:100px" pSortableColumn="col.header">{{col.header}} <p-sortIcon
+                        field="col.header">
+                    </p-sortIcon>
+                </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-claims let-columns="columns" let-ri="rowIndex">
+                <tr [pEditableRow]="claims">
+                    <!-- <td style="text-align: center;" style="width:80px">
+                        <button *ngIf="!claims.isEditable" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                            (click)="onRowEditInit(claims)" class="p-button-text"></button>
+                        <button *ngIf="claims.isEditable" pButton type="submit" icon="pi pi-check"
+                            (click)="onRowEditSave(claims)" class="p-button-text p-button-success p-mr-2"></button>
+                        <button *ngIf="claims.isEditable" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                            (click)="onRowEditCancel(claims, ri)" class="p-button-text p-button-danger"></button>
+                    </td>  -->
+                    <td style="width:80px">
+                        <a (click)="goToRegisterClaim(claims.id)" class="viewcion p-pr-3"><i class="pi pi-eye"></i></a><a class="statusicon"><i
+                                class="pi pi-compass"></i></a>
+                    </td>
+                    <td *ngFor="let col of columns" style="width:100px">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims[col.field]}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims[col.field]" name="col.field"
+                                        #col.field="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims[col.field]}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims.Insurers_claim_no}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims.iClaimNumber" name="iClaimNumber"
+                                        #iClaimNumber="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.Insurers_claim_no}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims.Date_of_loss | date}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims.dateOfLoss" name="dateOfLoss"
+                                        #dateOfLoss="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.Date_of_loss | date}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims.Claim_description}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims.description" name="description"
+                                        #description="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.Claim_description}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims.Loss_estimate_Or_Claim_amount}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims.claimAmt" name="claimAmt"
+                                        #claimAmt="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.Loss_estimate_Or_Claim_amount}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims.netPremium}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims.netPremium" name="netPremium"
+                                        #netPremium="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.netPremium}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims.Initiators_BU}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims.initiatorsBU" name="initiatorsBU"
+                                        #initiatorsBU="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.Initiators_BU}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims.Profit_Centre}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims.profitCentre" name="profitCentre"
+                                        #profitCentre="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.Profit_Centre}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims.Initiators_Division}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims.company" name="company"
+                                        #company="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.Initiators_Division}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else noUpdate">
+                                    {{claims.Initiators_name}}
+                                </ng-container>
+                                <ng-template #noUpdate>
+                                    <input pInputText type="text" [(ngModel)]="claims.initiatorsName"
+                                        name="initiatorsName" #initiatorsName="ngModel" />
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.Initiators_name}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <ng-container *ngIf="claims.isUpdate == true && !claims.isEditable; else yesEditable">
+                                    {{claims.Claim_status}}
+                                </ng-container>
+                                <ng-template #yesEditable>
+                                    <p-checkbox binary="true" [(ngModel)]="claims.status" name="status"
+                                        #status="ngModel">
+                                    </p-checkbox>
+                                </ng-template>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{claims.Claim_status}}
+                            </ng-template>
+                        </p-cellEditor>
+                        
+                    </td> -->
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</p-card>

@@ -1,0 +1,442 @@
+<p-card>
+    <div class="p-grid">
+        <div class="p-col-12 p-lg-2 p-md-4 p-sm-12 p-pt-0 p-pb-0 dropselection">
+            <p-dropdown [options]="claims" [(ngModel)]="selectedClaim" (onChange)="onClaimsChange($event)" optionLabel="label"></p-dropdown>
+        </div>
+        <p-header class="p-col-12 p-pt-0 p-pb-0 subheading">
+            Download or receive the filtered data.
+        </p-header>
+
+
+        <div class="p-col-12" style="position: relative;">
+            <button pButton type="button" label="Download PDF" (click)="downloadPdf()" class="btnCss downloadBtn poscss p-mr-2 p-mt-4">
+            </button>
+            <button pButton type="button" label="Email PDF" class="btnCss Email_btn p-mr-2 p-mt-4"> </button>
+            <!--  <button pButton type="button" label="Special filters" class="btnCss filtersBtn p-mr-2 p-mt-4"> </button> -->
+
+            <p-accordion>
+                <p-accordionTab header="{{activeState?'Special filters':'Special filters'}}" [(selected)]="activeState">
+                    <div class="p-col-12 p-pt-4">
+                        <form [formGroup]="searchForm">
+                            <div formArrayName="quantities">
+                                <div *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+                                    <div class="p-grid">
+                                        <div class=" p-col-12 p-md-4">
+                                            <label for="firstname">Field name</label>
+                                            <p-dropdown [options]="fieldsList" optionValue="name" optionLabel="name"
+                                                formControlName="fieldName" placeholder="Select field type"></p-dropdown>
+                                        </div>
+                
+                                        <div class="p-col-12 p-md-4">
+                                            <label for="firstname">Condition</label>
+                                            <p-dropdown [options]="conditionsList" optionValue="value" optionLabel="label" (onChange)="onChange($event, quantity)"
+                                                formControlName="condition" placeholder="Select condition"></p-dropdown>
+                                        </div>
+                
+                                        <div class="p-col-12 p-md-3">
+                                            <label for="lastname">Comparison</label>
+                                            <input id="fieldId" type="text" formControlName="comparision" pInputText>
+                                        </div>
+                                        <div class="removeWrapperDiv diagnosisRemove">
+                                            <i class="pi pi-times closeIcon_marginT" (click)="removeQuantity(i)"></i>
+                                        </div>
+                                    </div>
+                                    <div class="dynamicCtrlWrap" *ngIf="datesFlag">
+                                        <div class="p-col-12 p-md-4 p-sm-12">
+                                            <label for="lastname">From date</label>
+                                            <p-calendar formControlName="startDate" [showIcon]="true" class="calanderIcon">
+                                            </p-calendar>
+                                        </div>
+
+                                        <div class="p-col-12 p-md-4 p-sm-12">
+                                            <label for="lastname">To date</label>
+                                            <p-calendar formControlName="endDate" [showIcon]="true" class="calanderIcon">
+                                            </p-calendar>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="p-grid p-col-12" style="display: inline;">
+                        <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Add" (click)="addQuantity()"
+                            class="btnCss addBtn p-mr-2"> </button>
+                        <button pButton type="button" class="btnCss submitBtn" label="Submit"></button>
+                    </div>
+                </p-accordionTab>
+            </p-accordion>
+
+        </div>
+
+
+
+    </div>
+</p-card>
+<p-card>
+    <div class="p-grid">
+        <div class="cardSection">
+            <div class="p-grid p-col-12">
+                <div class="p-col-12 p-xl-2 p-lg-3 p-md-4 p-sm-6 p-xs-12" *ngFor="let form of jobStatusList, let i = index">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="{{form.name}}" class="btnDashboard"  
+                            [ngClass]="{'badge-danger': (i == 0 || i == 4 || i== 8 || i == 11),'badge-info': (i == 1 || i==5 || i== 8), 'badge-warning': (i == 2 || i==6 ||  i== 9), 'badge-success': (i==3 || i==7 ||  i== 10) }">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            {{form.count}}
+                        </div>
+                        <div class="p-col-12">
+                            <!-- <a href="/ClaimModule/viewClaim" class="view-all"></a> -->
+                            <a (click)="redirectToViewClaim('', form.name, 1)"
+                                    style="cursor: pointer; color:blue;">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Documents Requested" class="btnDashboard badge-info">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            12
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Documents Submitted"
+                                class="btnDashboard badge-warning"> </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                           0
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Awaiting Assessment"
+                                class="btnDashboard badge-success"> </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            2
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Assessment Shared" class="btnDashboard badge-danger">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                           2
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Consent Received" class="btnDashboard badge-info">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            12
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>  -->
+            </div>
+            <!-- <div class="p-grid p-col-12">  
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                   
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Settlement Follow-up"
+                                class="btnDashboard badge-warning"> </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                           0
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Settled"
+                                class="btnDashboard badge-success"> </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            0
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Rejected" class="btnDashboard badge-danger">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                           2
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Withdrawn" class="btnDashboard badge-danger">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                           2
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                  
+                </div>
+            </div> -->
+
+        </div>
+
+
+    </div>
+</p-card>
+<p-card *ngFor="let subJob of subJobsList">
+    <div class="p-grid">
+        <p-header class="p-col-12 p-pt-0 p-pb-0 Subheader-title">
+            <div class="p-col-12">
+                <!-- Documents Requested: -->
+                {{subJob.jobType}}
+            </div>
+        </p-header>
+    </div>
+    <div class="p-grid">
+        <div class="p-grid p-col-12">
+
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12"  *ngFor="let job of subJob.jobStatus, let i= index">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="{{job.name}}" class="btnDashboard" [ngClass]="{'badge-danger': (i == 0 || i == 4 || i== 8 || i == 11),'badge-info': (i == 1 || i==5 || i== 8), 'badge-warning': (i == 2 || i==6 ||  i== 9), 'badge-success': (i==3 || i==7 ||  i== 10) }">
+                        </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        {{job.count}}
+                    </div>
+                    <div class="p-col-12">
+                        
+                        <a (click)="redirectToViewClaim(subJob.jobType, job.name, 2)"
+                                    style="cursor: pointer; color:blue;">View All</a>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Escalation 1" class="btnDashboard badge-warning"> </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        0
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Escalation 2" class="btnDashboard badge-success"> </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        2
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Escalation X" class="btnDashboard badge-danger">
+                        </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        2
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</p-card>
+<!-- <p-card>
+    <div class="p-grid">
+        <p-header class="p-col-12 p-pt-0 p-pb-0 Subheader-title">
+            <div class="p-col-12">
+                Awaiting Assessment :
+            </div>
+        </p-header>
+    </div>
+    <div class="p-grid">
+        <div class="p-grid p-col-12">
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Reminder 1" class="btnDashboard badge-info">
+                        </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        12
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Escalation 1" class="btnDashboard badge-warning"> </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        0
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Escalation 2" class="btnDashboard badge-success"> </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        2
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Escalation X" class="btnDashboard badge-danger">
+                        </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        2
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-card>
+<p-card>
+    <div class="p-grid">
+        <p-header class="p-col-12 p-pt-0 p-pb-0 Subheader-title">
+            <div class="p-col-12">
+                Consent Received:
+            </div>
+        </p-header>
+    </div>
+    <div class="p-grid">
+        <div class="p-grid p-col-12">
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Reminder 1" class="btnDashboard badge-info">
+                        </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        12
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Escalation 1" class="btnDashboard badge-warning"> </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        0
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Escalation 2" class="btnDashboard badge-success"> </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        2
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                <div class="dashboard_tile">
+                    <div class="p-col-12">
+                        <button pButton type="button" label="Escalation X" class="btnDashboard badge-danger">
+                        </button>
+                    </div>
+                    <div class="p-col-12 numbercss">
+                        2
+                    </div>
+                    <div class="p-col-12">
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-card> -->

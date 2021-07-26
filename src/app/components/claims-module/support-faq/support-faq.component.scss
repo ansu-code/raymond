@@ -1,0 +1,104 @@
+@import "../../../../assets/styles/variables.scss";
+
+
+ @media (min-width: 320px) { 
+  .para{
+    margin-top: 10px;
+    color: $subhedingcolor ;
+    font-size:$f18;
+  }
+
+  .para1{
+    margin-top: 10px;
+    color: $subhedingcolor;
+    font-size: $f13;
+  }
+
+  .question{
+    font-size: 16px;
+    font-weight: 500;
+    color: $gridcancelcolor;
+    margin-top: 10px;
+  }
+
+  
+
+ .accordion_content{
+   font-size:$f13;
+   color: $gridcancelcolor;
+   border: 1px solid $grayborder;
+   font-weight: 400;
+   padding: 10px;
+ }
+ }
+
+ @media (min-width: 360px) { 
+     
+}
+
+@media (min-width: 375px) { 
+     
+}
+
+@media (min-width: 411px) { 
+     
+}
+
+@media (min-width: 568px) { 
+     
+}
+
+@media (min-width: 640px) { 
+     
+}
+
+@media (min-width: 667px) { 
+     
+}
+
+@media (min-width: 768px) { 
+  
+
+  .para{
+    padding: 8px;
+    margin-top: 10px;    
+  }
+
+  .para1{
+    padding: 10px;   
+  }
+
+ .accordion_content{
+   font-size:$f18;
+   color: $gridcancelcolor;   
+   padding: 15px;
+
+ }
+}
+
+@media (min-width: 1024px) { 
+     
+}
+
+@media (min-width: 1200px) { 
+     
+}
+
+@media (min-width: 1366px) { 
+  .question{
+    font-size:$f18;    
+  }
+
+}
+
+@media (min-width: 1440px) { 
+     
+}
+
+@media (min-width: 1600px) { 
+     
+}
+
+@media (min-width: 1920px) { 
+     
+}

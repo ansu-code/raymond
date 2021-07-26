@@ -1,0 +1,101 @@
+@import "../../../../assets/styles/variables.scss";
+
+
+
+
+
+:host::ng-deep{
+ 
+    .p-accordion .p-accordion-header .p-accordion-header-link .p-accordion-toggle-icon{
+        display: none;
+    }
+    .p-accordion .p-accordion-header .p-accordion-header-link{
+     background-color: $whitecolor;
+    color:$brand_clr3; 
+    border: 1px solid $brand_clr3;
+    }
+   
+    .p-accordion .p-accordion-content {        
+    color:$menu_highlight; 
+    border: 0px solid $marinbtnhover;
+    font-weight: 500;
+    padding: 0px;
+    }
+    .p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link{
+        background-color:  $brand_clr3; 
+        color:$whitecolor;
+    }
+    .p-accordion .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link{
+        background-color: $brand_clr3; 
+        color:$whitecolor;
+    }
+    .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+        outline: 0 none;
+        outline-offset: 0;
+        box-shadow: 0px 0px 0px 0rem #a6d5fa;
+    }
+
+    .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+        border-color: $brand_clr3;
+        background: $brand_clr3;
+        color: $whitecolor;
+    }
+}
+
+
+
+@media (min-width: 320px) {
+    :host::ng-deep{
+        .p-accordion-header-link{
+            width:150px;        
+            height: auto;
+            border-radius: 3px;
+            padding: 6px 12px !important;
+            font-size: $f13;
+            background-color: $whitecolor;
+            color:$marinbtn; 
+            margin-top: 9px;
+            }
+            .p-accordion-header{
+                width:120px; 
+            }
+    }
+    
+
+}
+@media (min-width: 360px) {}
+@media (min-width: 375px) {}
+@media (min-width: 414px) {}
+@media (min-width: 480px) {}
+@media (min-width: 568px) {}
+@media (min-width: 640px) {}
+@media (min-width: 667px) {}
+@media (min-width: 736px) {}
+@media (min-width: 768px) {}
+@media (min-width: 769px) {}
+@media (min-width: 991px) {}
+@media (min-width: 1024px) {}
+@media (min-width: 1200px) {}
+@media (min-width: 1366px) {
+    :host::ng-deep{
+    .p-accordion-header-link{
+        width:195px;        
+        height: auto;
+        border-radius: 3px;
+        padding: 9px 12px !important;
+        font-size: $f18;
+        background-color: $whitecolor;
+        color:$marinbtn; 
+        margin-top: 9px;
+        margin-left: -7px;
+        }
+        .p-accordion-header{
+            width:150px; 
+        }
+    }
+
+   
+}
+@media (min-width: 1440px) {}
+@media (min-width: 1600px) {}
+@media (min-width: 1920px) {}

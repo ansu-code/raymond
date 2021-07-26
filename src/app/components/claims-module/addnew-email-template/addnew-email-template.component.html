@@ -1,0 +1,191 @@
+<p-card>
+    <div class="p-grid">
+        <p-header class="p-col-12 p-pt-0 p-pb-0 header-title">
+            EMAIL TEMPLATE CONFIGUARATION
+        </p-header>
+        <p-header class="p-col-12 p-pt-0 p-pb-0 subheading">
+            Configure email and rules.
+        </p-header>
+    </div>
+   
+</p-card>
+<p-card>
+    <div class="p-grid">
+        <p-header class="p-col-12 p-pt-0 p-pb-0 header-title">
+            CLAIM - FULL VIEW
+        </p-header>
+    </div>
+
+    <form [formGroup]="emailTemplateForm">
+    <p-tabView class="tabsytle">
+        <p-tabPanel header="Email Template">
+            <p-card>
+            <div class="p-grid">
+                <p-header class="p-col-12 p-pb-0 header-title">
+                    Claim Creation - Email Template
+                </p-header>
+                <p-header class="p-col-12 p-pt-0 p-pb-0 subheading">
+                    Use %Key_number% and %var_number% if you are expecting data to be pulled from the template
+                </p-header>
+            </div>
+        </p-card>
+            <p-card>
+                <div class="p-col-12 p-pl-0">                    
+                    <label for="firstname">Template Name</label>
+                    <input id="fieldId" formControlName="EmailTemplateName" type="text" pInputText>
+                </div>
+                       
+                <div class="p-col-12 p-pl-0">                    
+                        <label for="firstname">From Email address</label>
+                        <input id="fieldId" formControlName="FromEmail" type="text" pInputText>
+                </div>
+
+                <div class="p-col-12 p-pl-0">                 
+                        <label for="firstname">Subject</label>
+                        <input id="fieldId" formControlName="Subject" type="text" pInputText>
+                </div>
+
+                <div class="p-col-12 p-pl-0">                   
+                  <p-editor formControlName="EmailBody" [style]="{'height':'320px'}"></p-editor>  
+                </div>
+            </p-card>
+
+            <p-card>
+                    <div class="p-col-12 p-pl-0">
+                        <div class="tableSubheader">
+                            Key Values
+                        </div>
+                    </div>
+                    <div class="p-grid p-col-12  p-lg-8 p-md-12 p-sm-6 p-pl-0">  
+                        <div class="dynamicCtrlWrap">                        
+                        <div class=" p-col-12 p-lg-6 p-md-6 p-sm-12">
+                            <label for="firstname">Key</label>
+                            <input id="fieldId" type="text" pInputText>
+                        </div>
+                        <div class="p-col-12  p-lg-6 p-md-6 p-sm-12">
+                            <label for="lastname">Value (%var%)</label>
+                            <input id="fieldId" type="text" pInputText>
+                        </div> 
+                      </div> 
+                      <div class="removeWrapperDiv diagnosisRemove">
+                        <i class="pi pi-times closeIcon_marginT"></i>
+                    </div>   
+                    </div>
+                   
+    
+                <div class="p-grid p-col-12" style="display: inline;">
+                    <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Add"
+                        class="btnCss addBtn p-mr-2"> </button>
+                    <button pButton type="button" class="btnCss submitBtn" label="Submit"></button>
+                </div>
+            </p-card>
+
+            <p-card>
+                <div class="p-col-12 p-pl-0">
+                    <div class="tableSubheader">
+                        Upload claim data
+                    </div>
+                </div>
+                <div class="p-grid p-col-12 p-pl-0">  
+                    <div class="dynamicCtrlWrap">                        
+                    <div class=" p-col-12 p-md-3 p-sm-12">
+                        <label for="firstname">Document type</label>
+                        <p-dropdown optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="p-col-12 p-md-3 p-sm-12">
+                        <label for="lastname">Document Name</label>
+                        <input id="fieldId" type="text" pInputText>
+                    </div>    
+
+                    <div class="p-col-12 p-md-3 p-sm-12 center">
+                        <label for="firstname">Browse file</label>
+                        <ngx-file-drop
+                            dropZoneLabel="Drop files here"                                            
+                            accept=".pdf,.docx,.xlsx,.pptx"
+                            multiple="true"
+                        >
+                            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" multiple="true">
+                                <div
+                                    style="width:100%;height:24px;flex:3;text-align: center;margin-top:1px;color: #646565;">
+                                 
+                                </div>
+                                <div style="width:100%;height:auto;flex:1;text-align: center;margin-top:0px;">
+                                    <button type="button">Browse Files</button>
+                                </div>
+                            </ng-template>
+                        </ngx-file-drop>
+                       
+                    </div>
+                    <div class="p-col-12 p-md-3 p-sm-12">
+                        <label for="lastname">Description</label>
+                        <input id="fieldId" type="text" pInputText>
+                    </div>   
+                       
+                    </div> 
+                    <div class="removeWrapperDiv diagnosisRemove">
+                        <i class="pi pi-times closeIcon_marginT"></i>
+                    </div> 
+                </div>
+               
+        </p-card>
+
+        </p-tabPanel>
+        <p-tabPanel header="Email">
+            <p-card>
+                <div class="p-grid">
+                    <p-header class="p-col-12 p-pb-0 header-title">
+                        When to Trigger this email
+                    </p-header>
+                    <p-header class="p-col-12 p-pt-0 p-pb-0 subheading">
+                        Set the rule to trigger the template
+                    </p-header>
+                </div>
+            </p-card>
+               
+    
+                <p-card>
+                        <div class="p-col-12 p-pl-0">
+                            <div class="tableSubheader">
+                                Set the Rule to share the email
+                            </div>
+                        </div>
+                        <div class="p-grid p-col-12  p-lg-8 p-md-12 p-sm-6 p-pl-0">  
+                            <div class="dynamicCtrlWrap">                        
+                            <div class=" p-col-12 p-lg-6 p-md-6 p-sm-12">
+                                <label for="firstname">Activity</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div>
+                            <div class="p-col-12  p-lg-6 p-md-6 p-sm-12">
+                                <label for="lastname">Workflow Status</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div> 
+                          </div> 
+                          <div class="removeWrapperDiv diagnosisRemove">
+                            <i class="pi pi-times closeIcon_marginT"></i>
+                        </div>   
+                        </div>
+
+                 
+                    <div class="p-grid p-col-12" style="display: inline;">
+                        <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Add"
+                            class="btnCss addBtn p-mr-2"> </button>
+                        <button pButton type="button" class="btnCss submitBtn" label="Submit"></button>
+                    </div>
+                </p-card>
+              
+               
+                                                                       
+        </p-tabPanel>
+    </p-tabView>
+    <div class="p-grid p-jc-end">
+        <div class="p-col-12 p-md-5 p-sm-12">
+            <span class="p-buttonset">
+                <button pButton type="button" label="Previous" class="btnCss previousBtn"></button>
+                <button pButton type="button" label="Next" class="btnCss nextBtn p-mr-2"></button>
+                <button pButton type="button" label="Finish" (click)="submitEmailTemplate(emailTemplateForm.value)" class="btnCss finishBtn"></button>
+                <button pButton type="button" label="Cancel" class="btnCss cancelBtn"></button>
+            </span>
+        </div>
+    </div>
+    </form>
+</p-card>

@@ -1,0 +1,216 @@
+<p-card>
+    <div class="p-grid">
+        <p-header class="p-col-12 p-pt-0 p-pb-0 header-title">
+            EMAIL PARSER CONFIGUARATION
+        </p-header>
+        <p-header class="p-col-12 p-pt-0 p-pb-0 subheading">
+            To Register or Update claim.
+        </p-header>
+    </div>
+    <div class="p-col-12" style="position:relative;">  
+        <p-accordion>
+        <p-accordionTab header="Dowload Parser logs" [(selected)]="activeState">
+            <div class="p-grid p-mt-4">
+                <div class="p-col-6">
+                    <div class="p-col-12">
+                     How many days:{{val}}
+                </div>
+                <div class="p-col-12 p-mt-2">
+                    <p-slider [(ngModel)]="val"></p-slider>
+                    </div>
+                </div>   
+                <div class="p-col-12 p-mt-4">
+            <button pButton type="button" label="Download" class="btnCss downloadBtn addposs p-mr-2"> </button>
+      </div>
+        </div>
+        </p-accordionTab>
+    </p-accordion>
+
+</div>
+</p-card>
+<p-card>
+    <div class="p-grid">
+        <p-header class="p-col-12 p-pt-0 p-pb-0 header-title">
+            CLAIM - FULL VIEW
+        </p-header>
+    </div>
+
+    <p-tabView class="tabsytle">
+        <p-tabPanel header="Server Details">
+            <div class="p-col-12 p-p-0">
+                <div class="cardSection">
+                    <p-card>
+                       
+                        <div class="p-grid p-col-12 p-pl-0">
+                            <div class="p-col-12 p-md-4 p-sm-6">
+                                <label for="firstname">WEBX_APP_ID</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div>
+                            <div class="p-col-12 p-md-4 p-sm-6">
+                                <label for="lastname">WEBX_APP_SECRET</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div>
+        
+                            <div class="p-col-12 p-md-4 p-sm-6">
+                                <label for="firstname">IMAP details</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div>  
+                        </div>
+
+                        <div class="p-grid p-col-12 p-pl-0">
+                            <div class="p-col-12 p-md-4 p-sm-6">
+                                <label for="firstname">IMAP port</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div>
+                            <div class="p-col-12 p-md-4 p-sm-6">
+                                <label for="lastname">From Email address</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div>
+        
+                            <div class="p-col-12 p-md-4 p-sm-6">
+                                <label for="firstname">Password</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div>  
+                        </div>
+        
+                      
+                    </p-card>
+                </div>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="Claim Creation">
+            <p-card>
+            <div class="p-grid">
+                <p-header class="p-col-12 p-pb-0 header-title">
+                    Claim Creation - Email Template
+                </p-header>
+                <p-header class="p-col-12 p-pt-0 p-pb-0 subheading">
+                    Use %Key_number% and %var_number% if you are expecting data to be pulled from the template
+                </p-header>
+            </div>
+        </p-card>
+            <p-card>
+                       
+                <div class="p-col-12 p-pl-0">                
+                        <label for="firstname">From Email address</label>
+                        <input id="fieldId" type="text" pInputText>
+                </div>
+
+                <div class="p-col-12 p-pl-0">                      
+                        <label for="firstname">Subject</label>
+                        <input id="fieldId" type="text" pInputText>
+                </div>
+
+                <div class="p-col-12 p-pl-0">                   
+                  <p-editor [(ngModel)]="text1" [style]="{'height':'320px'}"></p-editor> 
+                </div>
+            </p-card>
+
+            <p-card>
+                    <div class="p-col-12 p-pl-0">
+                        <div class="tableSubheader">
+                            Key Values
+                        </div>
+                    </div>
+                    <div class="p-grid p-col-12  p-lg-8 p-md-12 p-sm-6 p-pl-0">  
+                        <div class="dynamicCtrlWrap">                        
+                        <div class=" p-col-12 p-lg-6 p-md-6 p-sm-12">
+                            <label for="firstname">Key</label>
+                            <input id="fieldId" type="text" pInputText>
+                        </div>
+                        <div class="p-col-12  p-lg-6 p-md-6 p-sm-12">
+                            <label for="lastname">Value (%var%)</label>
+                            <input id="fieldId" type="text" pInputText>
+                        </div> 
+                      </div> 
+                      <div class="removeWrapperDiv diagnosisRemove">
+                        <i class="pi pi-times closeIcon_marginT"></i>
+                    </div>   
+                    </div>
+    
+                <div class="p-grid p-col-12" style="display: inline;">
+                    <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Add"
+                        class="btnCss addBtn p-mr-2"> </button>
+                    <button pButton type="button" class="btnCss submitBtn" label="Submit"></button>
+                </div>
+            </p-card>
+
+        </p-tabPanel>
+        <p-tabPanel header="Claim Status Update">
+            <p-card>
+                <div class="p-grid">
+                    <p-header class="p-col-12 p-pb-0 header-title">
+                        Claim Update - Email Template
+                    </p-header>
+                    <p-header class="p-col-12 p-pt-0 p-pb-0 subheading">
+                        Use %Key_number% and %var_number% if you are expecting data to be pulled from the template
+                    </p-header>
+                </div>
+            </p-card>
+                <p-card>
+                    <div class="p-grid p-col-12 p-pl-0">  
+                    <div class="p-col-12 p-lg-6">                    
+                            <label for="firstname">From Email address</label>
+                            <input id="fieldId" type="text" pInputText>
+                    </div>
+                    <div class="p-col-12 p-lg-6">                    
+                        <label for="firstname"> Action type</label>
+                        <p-dropdown optionLabel="name"></p-dropdown>
+                     </div>
+                    </div>
+    
+                    <div class="p-col-12 p-pl-0">                   
+                            <label for="firstname">Subject</label>
+                            <input id="fieldId" type="text" pInputText>
+                    </div>
+    
+                    <div class="p-col-12 p-pl-0">                
+                       <p-editor [(ngModel)]="text1" [style]="{'height':'320px'}"></p-editor> 
+                    </div>
+                </p-card>
+    
+                <p-card>
+                        <div class="p-col-12 p-pl-0">
+                            <div class="tableSubheader">
+                                Key Values
+                            </div>
+                        </div>
+                        <div class="p-grid p-col-12  p-lg-8 p-md-12 p-sm-6 p-pl-0">  
+                            <div class="dynamicCtrlWrap">                        
+                            <div class=" p-col-12 p-lg-6 p-md-6 p-sm-12">
+                                <label for="firstname">Key</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div>
+                            <div class="p-col-12  p-lg-6 p-md-6 p-sm-12">
+                                <label for="lastname">Value (%var%)</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div> 
+                          </div> 
+                          <div class="removeWrapperDiv diagnosisRemove">
+                            <i class="pi pi-times closeIcon_marginT"></i>
+                        </div>   
+                        </div>
+        
+                    <div class="p-grid p-col-12" style="display: inline;">
+                        <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Add"
+                            class="btnCss addBtn p-mr-2"> </button>
+                        <button pButton type="button" class="btnCss submitBtn" label="Submit"></button>
+                    </div>
+                </p-card>
+                <button pButton type="button" icon="pi pi-plus" iconPos="left" label=" Add template for More statuses"
+                class="btnCss addBtn p-mr-2"> </button>
+               
+                                                                       
+        </p-tabPanel>
+    </p-tabView>
+    <div class="p-grid p-jc-end">
+        <div class="p-col-12 p-md-5 p-sm-12">
+            <span class="p-buttonset">
+                <button pButton type="button" label="Previous" class="btnCss previousBtn"></button>
+                <button pButton type="button" label="Next" class="btnCss nextBtn p-mr-2"></button>
+                <button pButton type="button" label="Finish" class="btnCss finishBtn"></button>
+                <button pButton type="button" label="Cancel" class="btnCss cancelBtn"></button>
+            </span>
+        </div>
+    </div>
+</p-card>

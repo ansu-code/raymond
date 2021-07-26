@@ -1,0 +1,178 @@
+<p-card>
+    <div class="p-grid">
+        <p-header class="p-col-12 p-pt-0 p-pb-0 header-title">
+            POLICY NUMBERS MASTER
+        </p-header>
+    </div>
+    <div class="p-col-12" style="position: relative;">
+        <button pButton type="button" label="Add New" class="btnCss downloadBtn addposs p-mr-2 p-mt-2"> </button>       
+        <button pButton type="button" label="Download Sample xls" class="btnCss downloadBtn downloadposs p-mr-2 p-mt-2"> </button>
+       <p-accordion>
+            <p-accordionTab header="Bulk Upload" [(selected)]="activeState">
+                <div class="p-grid p-mt-4">
+                    <div class="cardSection">
+                        <p-card>
+                            <div class="p-col-12 p-pl-0">
+                                <div class="tableSubheader">
+                                    Upload claim data
+                                </div>
+                            </div>
+                            <div class="p-grid">
+                                <div class="dynamicCtrlWrap">
+                                <div class=" p-col-12 p-md-3">
+                                    <label for="firstname">Document type</label>
+                                    <p-dropdown optionLabel="name"></p-dropdown>
+                                </div>
+                                <div class="p-col-12 p-md-3">
+                                    <label for="lastname">Document Name</label>
+                                    <input id="fieldId" type="text" pInputText>
+                                </div>
+                                    <div class="p-col-12 p-md-3 center">
+                                        <label for="firstname">Browse file</label>
+                                        <ngx-file-drop
+                                            dropZoneLabel="Drop files here"                                            
+                                            accept=".pdf,.docx,.xlsx,.pptx"
+                                            multiple="true"
+                                        >
+                                            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" multiple="true">
+                                                <div
+                                                    style="width:100%;height:24px;flex:3;text-align: center;margin-top:1px;color: #646565;">
+                                                 
+                                                </div>
+                                                <div style="width:100%;height:auto;flex:1;text-align: center;margin-top:0px;">
+                                                    <button type="button">Browse Files</button>
+                                                </div>
+                                            </ng-template>
+                                        </ngx-file-drop>
+                                       
+                                    </div>
+                               
+                                <div class="p-col-12  p-md-3">
+                                    <label for="lastname">Description</label>
+                                    <input id="fieldId" type="text" pInputText>
+                                </div>
+                                </div>
+
+                                <div class="removeWrapperDiv diagnosisRemove">
+                                    <i class="pi pi-times closeIcon_marginT"></i>
+                                </div>
+                            </div>
+                            <div class="p-col-12 p-pl-0">
+                                <button pButton type="button" class="btnCss submitBtn" label="Submit"></button>
+                            </div>
+                        </p-card>  
+                    </div>
+                </div>
+            </p-accordionTab>
+        </p-accordion>     
+    </div>
+</p-card>
+
+<p-card>
+    <div class="p-col-12 r_fontsize p-pl-0 p-pr-0">
+        <p-table [scrollable]="true" [style]="{width:'100%'}" scrollHeight="200px">
+            <ng-template pTemplate="caption">
+                <div class="p-grid">
+                    <div class="p-grid p-col-12">
+                    <div class="p-col-12 p-md-3 p-sm-6">
+                        <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                            selectedItemsLabel="{0} columns selected" placeholder="Toggle columns"></p-multiSelect>
+                    </div>
+                    <div class="p-col-12 p-md-3 p-sm-6">
+                        <div class="p-inputgroup">
+                            <input type="text" pInputText placeholder="Search">
+                            <button type="button" pButton pRipple icon="pi pi-search" class="btnCss searchbtn"></button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="colgroup" let-columns>
+                <colgroup>
+                    <col style="width:100px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                    <col style="width:200px">
+                    <col style="width:200px">
+                    <col style="width:200px">
+                    <col style="width:200px">                  
+                </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ID</th>
+                    <th>Insurer ID</th>
+                    <th>Created On</th>
+                    <th>Modified On</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product let-columns="columns">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button pButton type="button" label="InActive" class="btnDashboard badge-danger">
+                        </button>
+                        <button pButton type="button" label="Active" class="btnDashboard badge-info">
+                        </button>
+                    </td>
+                    <td><a href="#" class="btnCss eye"><i class="pi pi-eye"></i></a>
+                    </td>
+                    <td></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="p-col-12">
+        <div class="p-grid p-jc-end p-mt-2">
+            <button pButton type="button" label="Edit row" class="btnCss newrowBtn p-mr-2"> </button>
+            <button pButton type="button" label="New row" (click)="showBasicDialog()" class="btnCss newrowBtn p-mr-2">
+            </button>
+            <button pButton type="button" class="btnCss gridcancelBtn" label="Cancel"></button>
+        </div>
+    </div>
+</p-card>
+
+<p-dialog header="Add a new row" [(visible)]="displayBasic" class="popupviewClaim" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+
+    <div class="p-grid">
+        <div class="p-col-12 p-md-4">
+            Insurer ID
+        </div>
+        <div class="p-col-12 p-md-8">
+            <input id="fieldId" type="text" pInputText>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-12 p-md-4">
+            Created On
+        </div>
+        <div class="p-col-12 p-md-8">
+            <input id="fieldId" type="text" pInputText>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-12 p-md-4">
+            Modified On
+        </div>
+        <div class="p-col-12 p-md-8">
+            <input id="fieldId" type="text" pInputText>
+        </div>
+    </div>
+
+    <div class="p-grid p-jc-end p-mt-2">
+        <button pButton type="button" label="Save Changes" class="btnCss addBtn p-mr-2"> </button>
+        <button pButton type="button" label="Cancel" class="btnCss popupcancel p-mr-2"> </button>
+
+    </div>
+
+    <!--  <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template> -->
+</p-dialog>

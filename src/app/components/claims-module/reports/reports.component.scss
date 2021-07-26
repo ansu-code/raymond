@@ -1,0 +1,153 @@
+@import "../../../../assets/styles/variables.scss";
+
+
+
+
+.imgSection{
+    width:240px;
+    height:auto;
+    display: flex;    
+}
+.cardSection{
+    width:100%;
+    height:auto;
+    display: flex; 
+    flex-direction: column;
+}
+.dashboard_tile{
+    width:100%;
+    margin:0px auto;
+   // box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 0 24px 0 rgb(0 0 0 / 6%), 0 1px 0 0 rgb(0 0 0 / 2%);
+}
+
+.numbercss{
+    color:$gridcancelcolor;
+    font-weight: 700;
+    font-size: $f24;
+    list-style: 30px;
+}
+
+@media (min-width: 320px) {
+    :host::ng-deep{
+        .p-accordion-header-link{
+            width:120px;        
+            height: auto;
+            border-radius: 3px;
+            padding: 7px 12px !important;
+            font-size: $f13;
+            background-color: $whitecolor;
+            color:$marinbtn; 
+            margin-top: 55px;
+            margin-left: 2px;
+            }
+            .p-accordion-header{
+                width:120px; 
+            }
+    }
+    .poscss{
+        position: absolute;
+        left:10px;
+        font-size: $f13;
+        top: -7px;
+    }
+    .Email_btn{
+        position: absolute;
+        left:130px;
+        font-size: $f13;
+        top: -7px;
+        padding:1px 12px;
+    }
+
+    .mainDiv{
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .leftDiv{
+        width: 100%;
+        height: auto;
+        display: inline-block;  
+      
+       
+      }
+      .RightDiv{
+        width:100%;
+        height: auto;
+        display: inline-block;
+      }
+
+}
+@media (min-width: 360px) {}
+@media (min-width: 375px) {}
+@media (min-width: 411px) {
+    :host::ng-deep{
+        .p-accordion-header-link{            
+            margin-top: 9px;
+            margin-left:216px;
+            }
+    }
+}
+@media (min-width: 414px) {}
+@media (min-width: 480px) {}
+@media (min-width: 568px) {
+   
+}
+@media (min-width: 640px) {}
+@media (min-width: 667px) {}
+@media (min-width: 736px) {}
+@media (min-width: 768px) {}
+@media (min-width: 769px) {}
+@media (min-width: 991px) {}
+@media (min-width: 1024px) {}
+@media (min-width: 1200px) {}
+@media (min-width: 1366px) {
+    :host::ng-deep{
+    .p-accordion-header-link{
+        width:140px; 
+        padding: 9px 12px !important;
+        font-size: $f18;      
+        margin-top: 15px;
+        margin-left: 265px;
+        }
+        .p-accordion-header{
+            width:140px; 
+        }
+    }
+
+    .poscss{
+        position: absolute;
+        left:10px;
+        padding: 6px 12px;
+        font-size: $f18;
+        top: 0px;
+    }
+
+    .Email_btn{
+        position: absolute;
+        left:160px;
+        padding: 6px 12px;
+        font-size: $f18;
+        top: 0px;
+    }
+
+    .mainDiv{
+        width: 100%;
+        height: auto;
+        display: flex;
+      }
+      .leftDiv{
+        width: 49%;
+        height: auto;
+        display: inline-block;  
+        margin-right: 2%;
+      }
+      .RightDiv{
+        width: 49%;
+        height: auto;
+        display: inline-block;
+      }
+}
+@media (min-width: 1440px) {}
+@media (min-width: 1600px) {}
+@media (min-width: 1920px) {}

@@ -1,0 +1,289 @@
+<div class="mainDiv">
+    <div class="leftDiv">
+        <button pButton type="button" label="Email Templates" class="btnCss newrowBtn btnpadd"></button>
+        <p-card>
+            <div *ngFor="let emailTemplate of emailTemplatesList">
+                <a class="heading" style="cursor: pointer;" (click)="showEmailTemplate(emailTemplate)">{{emailTemplate}}</a><br /><br />
+            </div>
+            
+            <!-- <a class="heading" style="cursor: pointer;" (click)="ShowDiv('B')">Consent Email</a><br /><br />
+            <a class="heading" style="cursor: pointer;" (click)="ShowDiv('C')">Survey appointment Email</a><br /><br />
+            <a class="heading" style="cursor: pointer;" (click)="ShowDiv('D')">Payment Email</a><br /><br /> -->
+        </p-card>
+        <button pButton type="button" label="Configurations" (click)="conf_EmailbasedJobUpdate()"
+            class="btnCss newrowBtn btnpadd"></button>
+        <p-card>
+            <a class="heading">Email Server</a><br /><br />
+            <a class="heading">Claim Creation</a><br /><br />
+            <a class="heading">Status Update</a><br /><br />
+        </p-card>
+
+    </div>
+    <div class="RightDiv">
+        <div class="p-col-12 p-pt-0">
+            <button pButton type="button" label="Add New Template" (click)="addNewEmailTemplate()"
+                class="btnCss newrowBtn btnpaddNewTemp"></button>
+        </div>
+        <p-card>
+            
+        </p-card>
+        <div *ngIf="currDiv == 'A'">
+            <p-card>
+                <div class="p-col-12">
+
+                    <div class="p-grid">
+                        <div class="profilemainDiv">
+                           <!--  <div class="circleCss"></div> -->
+                           <img src="assets\images\user-1.jpg" class="imgleftDiv">
+                            <div class="headingRightDiv">
+                                <div class="heading">Humberto D. Champion</div>
+                                <div class="sub_heading">support@xxx.com</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-col-12" class="heading">Notification Email</div>
+                    <div class="p-col-12" class="para">Dear Sir/Madam,</div>
+                    <div class="p-col-12" class="para">Thank you for the Claim Intimation.</div>
+                    <div class="p-col-12" class="para">Your claim has been successfully registered under policy no.
+                        XXXXXXXXXX.</div>
+                    <div class="p-col-12" class="para">Please note our Claim reference No. XXXXX</div>
+                    <div class="p-col-12" class="para">ICICI Claim reference No. XXXXX</div>
+                </div>
+                <div class="p-grid" style="margin-top: 10px;">
+                    <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-12">
+                        <div class="p-col-12">
+                            <div class="p-grid">
+                                <div class="p-col-12 p-xl-4 p-lg-4 p-md-6 p-sm-5">
+                                    <label for="fieldId" class="label_heading">Date of Loss</label>
+                                </div>
+                                <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-7">
+                                    <input type="text" pInputText />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-12">
+                            <div class="p-grid">
+                                <div class="p-col-12 p-xl-4 p-lg-4 p-md-6 p-sm-5">
+                                    <label for="fieldId" class="label_heading">Claim Type</label>
+                                </div>
+                                <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-7">
+                                    <input type="text" pInputText />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-12">
+                            <div class="p-grid">
+                                <div class="p-col-12 p-xl-4 p-lg-4 p-md-6 p-sm-5">
+                                    <label for="fieldId" class="label_heading">Invoice No</label>
+                                </div>
+                                <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-7">
+                                    <input type="text" pInputText />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-12">
+                            <div class="p-grid">
+                                <div class="p-col-12 p-xl-4 p-lg-4 p-md-6 p-sm-5">
+                                    <label for="fieldId" class="label_heading">Contact Persons Name</label>
+                                </div>
+                                <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-7">
+                                    <input type="text" pInputText />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-12">
+                        <div class="p-col-12">
+                            <div class="p-grid">
+                                <div class="p-col-12 p-xl-4 p-lg-4 p-md-6 p-sm-5">
+                                    <label for="fieldId" class="label_heading">Cause of Loss</label>
+                                </div>
+                                <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-7">
+                                    <input type="text" pInputText />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-12">
+                            <div class="p-grid">
+                                <div class="p-col-12 p-xl-4 p-lg-4 p-md-6 p-sm-5">
+                                    <label for="fieldId" class="label_heading">Estimated Loss</label>
+                                </div>
+                                <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-7">
+                                    <input type="text" pInputText />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-12">
+                            <div class="p-grid">
+                                <div class="p-col-12 p-xl-4 p-lg-4 p-md-6 p-sm-5">
+                                    <label for="fieldId" class="label_heading">LR/BL/AWB No</label>
+                                </div>
+                                <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-7">
+                                    <input type="text" pInputText />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-12">
+                            <div class="p-grid">
+                                <div class="p-col-12 p-xl-4 p-lg-4 p-md-6 p-sm-5">
+                                    <label for="fieldId" class="label_heading">Contact persons Mobile No</label>
+                                </div>
+                                <div class="p-col-12 p-xl-6 p-lg-6 p-md-6 p-sm-7">
+                                    <input type="text" pInputText />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-col-12" class="para">Request you to kindly share the below documents by &nbsp;<a
+                            href="#" class="click_here">CLICKING HERE</a></div>
+                    <div class="p-col-12">
+                        <ol class="lists">
+                            <li>Claim Bill</li>
+                            <li>Damage / Shortage Certificate</li>
+                            <li>Commercial Invoice & Packing List</li>
+                            <li>Lorry Receipt / Bill of Lading / Airway Bill having discrepancy remarks noted on it.
+                            </li>
+                            <li>QC Report / Delivery Report</li>
+                            <li>Photographs of the damaged consignment</li>
+                        </ol>
+                    </div>
+                    <div class="p-col-12" class="para"><span class="note">Note:</span> This is an autogenerated email
+                        and the claims manager would coordinate further.</div>
+                    <div class="p-col-12" class="para1">Thanks & Regards,</div>
+                    <div class="p-col-12" class="para1">Insurance Brokering Partner</div>
+                </div>
+               <!--  <div class="p-col-3">
+                    <button pButton pRipple type="button" icon="pi pi-reply" class="btnCss newrowBtn"
+                        label="Reply"></button>
+                </div> -->
+            </p-card>
+        </div>
+        <div *ngIf="currDiv == 'B'">
+            <p-card>
+                <div class="p-col-12">
+                    <div class="p-grid">
+                        <div class="profilemainDiv">
+                            <!--  <div class="circleCss"></div> -->
+                            <img src="assets\images\user-1.jpg" class="imgleftDiv">
+                             <div class="headingRightDiv">
+                                 <div class="heading">Humberto D. Champion</div>
+                                 <div class="sub_heading">support@xxx.com</div>
+                             </div>
+                         </div>
+                        
+                    </div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-col-12" class="heading">Claim Ref/XXXX/1 - Assessment Received</div>
+                    <div class="p-col-12" class="para">Dear XXXXXXX,</div>
+                    <div class="p-col-12" class="para">Please find below the Assessment wrt to the subject Claim.
+                        Request you to kindly go through and provide your consent for the same.</div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-col-12" class="heading">ASSESSMENT DETAILS</div>
+                    <div class="p-col-12" class="para"><span class="note">Note:</span> This is an autogenerated email
+                        and the claims manager would coordinate further. Any replies sent to this email will not be
+                        monitored</div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-col-12" class="para1">Thanks & Regards,</div>
+                    <div class="p-col-12" class="para1">Insurance Brokering Partner</div>
+                </div>
+               <!--  <div class="p-col-3">
+                    <button pButton pRipple type="button" icon="pi pi-reply" class="btnCss newrowBtn"
+                        label="Reply"></button>
+                </div> -->
+            </p-card>
+        </div>
+
+        <div *ngIf="currDiv == 'C'">
+            <p-card>
+                <div class="p-col-12">
+                    <div class="p-grid">
+                        <div class="profilemainDiv">
+                            <!--  <div class="circleCss"></div> -->
+                            <img src="assets\images\user-1.jpg" class="imgleftDiv">
+                             <div class="headingRightDiv">
+                                 <div class="heading">Humberto D. Champion</div>
+                                 <div class="sub_heading">support@xxx.com</div>
+                             </div>
+                         </div>                       
+                    </div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-col-12" class="heading">Claim Ref No. XXXXX - Surveyor details</div>
+                    <div class="p-col-12" class="para">Dear Sir/ Ma'am,</div>
+                    <div class="p-col-12" class="para">"XXXXXXXXXXX" has been appointed to investigate the matter. Upon
+                        completion of survey, Letter Of Requirements shall be provided.</div>
+                    <div class="p-col-12" class="para">Surveyor Name: XXXXXXXXXX</div>
+                    <div class="p-col-12" class="para">Surveyor Contact: XXXXXXXXXX</div>
+                    <div class="p-col-12" class="para">General Do's & Don’t's</div>
+                </div>
+                <div class="p-col-12">
+                    <ul class="survey_list">
+                        <li>
+                            Kindly cooperate with the surveyor to ensure that the survey is completed without any delays
+                            as it may affect the claim
+                        </li>
+                        <li>
+                            Kindly do not share any documents directly with the surveyor, the documents must always be
+                            sent through Broker team only
+                        </li>
+                        <li>
+                            In case of any doubt kindly do not sign the Joint Inspection report (JIR) without consulting
+                            the Broker Claims Manager / Raymond Risk Assurance Team
+                        </li>
+                    </ul>
+                    <div class="p-col-12" class="para"><span class="note" style="font-weight: 500;">Note:</span> This is
+                        an autogenerated email. Any replies sent to this email will not be monitored.</div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-col-12" class="para1">Thanks & Regards,</div>
+                    <div class="p-col-12" class="para1">Insurance Brokering Partner</div>
+                </div>
+              <!--   <div class="p-col-3">
+                    <button pButton pRipple type="button" icon="pi pi-reply" class="btnCss newrowBtn"
+                        label="Reply"></button>
+                </div> -->
+            </p-card>
+        </div>
+        <div *ngIf="currDiv == 'D'">
+            <p-card>
+                <div class="p-col-12">
+                    <div class="p-grid">
+                        <div class="profilemainDiv">
+                            <!--  <div class="circleCss"></div> -->
+                            <img src="assets\images\user-1.jpg" class="imgleftDiv">
+                             <div class="headingRightDiv">
+                                 <div class="heading">Humberto D. Champion</div>
+                                 <div class="sub_heading">support@xxx.com</div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-col-12" class="heading">Claim Ref/XXXX/1 - Payment details</div>
+                    <div class="p-col-12" class="para">Dear XXXXXXX,</div>
+                    <div class="p-col-12" class="para">The claim has been settled on _____ (date) for _________ (amount)
+                        vide ____________ (NEFT details). Kindly cooridnate with AR team to reconcile the same
+                        accordingly.</div>
+                    <div class="p-col-12" class="para"><span class="note" style="font-weight: 500;">Note:</span> This is
+                        an autogenerated email. Any replies sent to this email will not be monitored.</div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-col-12" class="para1">Thanks & Regards,</div>
+                    <div class="p-col-12" class="para1">Insurance Brokering Partner</div>
+                </div>
+               <!--  <div class="p-col-3">
+                    <button pButton pRipple type="button" icon="pi pi-reply" class="btnCss newrowBtn"
+                        label="Reply"></button>
+                </div> -->
+            </p-card>
+        </div>
+    </div>
+</div>

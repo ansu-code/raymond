@@ -1,0 +1,263 @@
+<p-card>
+    <div class="p-grid">
+        <div class="p-col-12 p-lg-2 p-md-4 p-sm-12 p-pt-0 p-pb-0 header-title">
+            MARINE CLAIMS
+            <!--   <p-dropdown [options]="Claims" [(ngModel)]="selectedClaim" optionLabel="label"></p-dropdown> -->
+        </div>
+        <p-header class="p-col-12 p-pt-0 p-pb-0 subheading">
+            Download or receive the filtered data.
+        </p-header>
+
+
+        <div class="p-col-12" style="position: relative;">
+            <button pButton type="button" label="Download PDF" class="btnCss downloadBtn poscss p-mr-2 p-mt-4">
+            </button>
+            <button pButton type="button" label="Email PDF" class="btnCss Email_btn p-mr-2 p-mt-4"> </button>
+            <!--  <button pButton type="button" label="Special filters" class="btnCss filtersBtn p-mr-2 p-mt-4"> </button> -->
+
+            <p-accordion>
+                <p-accordionTab header="{{activeState?'Special filters':'Special filters'}}" [(selected)]="activeState">
+                    <div class="p-col-12 p-pt-4">
+                        <div class="p-grid">
+                            <div class=" p-col-12 p-md-4">
+                                <label for="firstname">Field name</label>
+                                <p-dropdown optionLabel="name"></p-dropdown>
+                            </div>
+
+                            <div class="p-col-12 p-md-4">
+                                <label for="firstname">Condition</label>
+                                <p-dropdown optionLabel="name"></p-dropdown>
+                            </div>
+                            <div class="p-col-12 p-md-3">
+                                <label for="lastname">Comparison</label>
+                                <input id="fieldId" type="text" pInputText>
+                            </div>
+                            <div class="p-col-12 p-md-1 p-mt-4">
+                                <button pButton type="button" label="Run" class="btnCss downloadBtn"></button>
+                            </div>
+                        </div>
+                    </div>
+                </p-accordionTab>
+            </p-accordion>
+
+        </div>
+
+    </div>
+</p-card>
+<p-card>
+    <div class="p-grid">
+        <div class="cardSection">
+            <div class="p-grid p-col-12">
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Claim Intimated" class="btnDashboard badge-danger">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            1
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Documents Requested" class="btnDashboard badge-info">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            12
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Documents Submitted"
+                                class="btnDashboard badge-warning"> </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            0
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Awaiting Assessment"
+                                class="btnDashboard badge-success"> </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            2
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Assessment Shared" class="btnDashboard badge-danger">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            2
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Consent Received" class="btnDashboard badge-info">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            12
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-grid p-col-12">
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <!-- <div class="dashboard_tile">
+                        test
+                    </div> -->
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Settlement Follow-up"
+                                class="btnDashboard badge-warning"> </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            0
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Settled" class="btnDashboard badge-success"> </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            0
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Rejected" class="btnDashboard badge-danger">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            2
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <div class="dashboard_tile">
+                        <div class="p-col-12">
+                            <button pButton type="button" label="Withdrawn" class="btnDashboard badge-danger">
+                            </button>
+                        </div>
+                        <div class="p-col-12 numbercss">
+                            2
+                        </div>
+                        <div class="p-col-12">
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-2 p-md-4 p-sm-6 p-xs-12">
+                    <!--  <div class="dashboard_tile">
+                        test
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</p-card>
+
+   
+    <div class="mainDiv">
+        <div class="leftDiv"> 
+            <p-card>
+                <div class="p-col-12">
+                    <div class="p-col-12 p-pt-0 p-pb-0 header-title">
+                        OPEN CLAIMS : NUMBER
+                    </div>
+                    <div class="p-col-12 ">
+                        <img src="./../../../../assets/images/capture1.png" alt="capture1" style="width: 100%;" />
+                    </div>
+                </div>
+            </p-card>
+            </div>
+            <div class="RightDiv">
+                <p-card>
+                    <div class="p-col-12">
+                        <div class="p-col-12 p-pt-0 p-pb-0 header-title">
+                            OPEN CLAIMS : AGEING ANALYSIS
+                        </div>
+                        <div class="p-col-12">
+                            <img src="./../../../../assets/images/capture2.png" alt="capture2" style="width: 100%;" />
+                        </div>
+                    </div>
+                </p-card>
+            </div>
+            </div>
+          
+            <div class="mainDiv">
+                <div class="leftDiv"> 
+                    <p-card>
+                        <div class="p-col-12">
+                            <div class="p-col-12 p-pt-0 p-pb-0 header-title">
+                                OPEN CLAIMS: QUANTUM
+                            </div>
+                            <div class="p-col-12">
+                                <img src="./../../../../assets/images/capture3.png" alt="capture3" style="width: 100%;" />
+                            </div>
+                        </div>
+                    </p-card>
+                    </div>
+                    <div class="RightDiv">
+                        <p-card>
+                            <div class="p-col-12">
+                                <div class="p-col-12 p-pt-0 p-pb-0 header-title">
+                                    OPEN CLAIMS : QUANTUM
+                                </div>
+                                <div class="p-col-12">
+                                    <img src="./../../../../assets/images/capture4.png" alt="capture4" style="width: 100%;" />
+                                </div>
+                            </div>
+                        </p-card>
+                    </div>
+                    </div>

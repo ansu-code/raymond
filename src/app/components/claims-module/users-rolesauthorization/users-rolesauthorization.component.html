@@ -1,0 +1,134 @@
+<p-card>
+    <div class="p-col-12 p-pt-0 p-pl-0">    
+    <p-header class="p-col-12 p-pt-0 p-pb-0 p-pl-0 header-title">
+        MODULES CONFIGURATION
+    </p-header>
+    </div>
+    <div class="p-col-12 r_fontsize p-p-0">       
+        <p-table [value]="claimsList" [scrollable]="true" [style]="{width:'100%'}">
+            <ng-template pTemplate="caption">
+                <div class="p-grid">
+                    <div class="p-col-12 p-lg-2 p-md-3 p-sm-3 p-pb-0">
+                       <!--  <div class="p-col-12 p-pb-0">
+                    <button pButton type="button" label="Add" (click)="showBasicDialog()" class="btnCss newrowBtn"> </button>
+                    </div> -->
+                </div>
+                    <div class="p-col-12 p-lg-10 p-md-9 p-sm-9 p-pr-0 p-pb-0">
+                        <div class="p-grid p-col-12 p-jc-end">
+                    <div class="p-col-12 p-lg-4 p-md-5 p-sm-5 p-pb-0">
+                        <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                            selectedItemsLabel="{0} columns selected" placeholder="Toggle columns"></p-multiSelect>
+                    </div>
+                    <div class="p-col-12 p-lg-4 p-md-5 p-sm-5 p-pb-0">
+                        <div class="p-inputgroup">
+                            <input type="text" pInputText placeholder="Search">
+                            <button type="button" pButton pRipple icon="pi pi-search" class="btnCss searchbtn"></button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="colgroup" let-columns>
+                <colgroup>
+                    <col style="width:120px">
+                    <col style="width:150px">
+                    <col style="width:150px">
+                   
+                </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>MODULE</th>
+                    <th> Access</th>
+                    <th>Expiry Date</th>
+                   
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product let-columns="columns">
+                <tr>
+                    <td>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+              
+            </ng-template>
+        </p-table>
+    </div>
+    <!-- <div class="p-col-12">
+        <div class="p-grid p-jc-end">
+            <button pButton type="button" label="Edit row" class="btnCss newrowBtn p-mr-2 p-mt-2"> </button>
+            <button pButton type="button" label="New row" class="btnCss newrowBtn p-mr-2 p-mt-2" (click)="showBasicDialog()">
+            </button>
+            <button pButton type="button" class="btnCss gridcancelBtn p-mt-2" label="Cancel"></button>
+        </div>
+    </div> -->
+</p-card>
+
+<p-card>
+    <div class="p-col-12 p-pt-0 p-pl-0">    
+    <p-header class="p-col-12 p-pt-0 p-pb-0 p-pl-0 header-title">
+        FEATURES CONFIGURATION
+    </p-header>
+    </div>
+    <div class="p-col-12 r_fontsize p-p-0">       
+        <p-table [value]="claimsList" [scrollable]="true" [style]="{width:'100%'}">
+            <ng-template pTemplate="caption">
+                <div class="p-grid">
+                    <div class="p-col-12 p-lg-2 p-md-3 p-sm-3 p-pb-0">
+                       <!--  <div class="p-col-12 p-pb-0">
+                    <button pButton type="button" label="Add" (click)="showBasicDialog()" class="btnCss newrowBtn"> </button>
+                    </div> -->
+                </div>
+                    <div class="p-col-12 p-lg-10 p-md-9 p-sm-9 p-pr-0 p-pb-0">
+                        <div class="p-grid p-col-12 p-jc-end">
+                    <div class="p-col-12 p-lg-4 p-md-5 p-sm-5 p-pb-0">
+                        <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                            selectedItemsLabel="{0} columns selected" placeholder="Toggle columns"></p-multiSelect>
+                    </div>
+                    <div class="p-col-12 p-lg-4 p-md-5 p-sm-5 p-pb-0">
+                        <div class="p-inputgroup">
+                            <input type="text" pInputText placeholder="Search">
+                            <button type="button" pButton pRipple icon="pi pi-search" class="btnCss searchbtn"></button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="colgroup" let-columns>
+                <colgroup>
+                    <col style="width:auto">
+                    <col style="width:auto"> 
+                </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Feature</th>
+                    <th> Access Right</th>
+                    
+                   
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product let-columns="columns">
+                <tr>
+                   
+                    <td></td>
+                    <td></td>
+                </tr>
+              
+            </ng-template>
+        </p-table>
+    </div>
+    <!-- <div class="p-col-12">
+        <div class="p-grid p-jc-end">
+            <button pButton type="button" label="Edit row" class="btnCss newrowBtn p-mr-2 p-mt-2"> </button>
+            <button pButton type="button" label="New row" class="btnCss newrowBtn p-mr-2 p-mt-2" (click)="showBasicDialog()">
+            </button>
+            <button pButton type="button" class="btnCss gridcancelBtn p-mt-2" label="Cancel"></button>
+        </div>
+    </div> -->
+</p-card>

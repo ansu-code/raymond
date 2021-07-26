@@ -1,0 +1,251 @@
+@import "../../../../assets/styles/variables.scss";
+
+
+
+@media (min-width: 320px) {
+
+    .marT20{
+        margin-top: 20px;
+    }
+
+    .popupviewClaim::ng-deep{
+        .p-dialog{
+            width: 300px;
+        }
+    }
+
+    :host::ng-deep{
+        .dataFilter{
+            .p-accordion-header-link{
+                width:100px; 
+                padding: 7px 12px !important;
+                font-size: $f13;      
+                top:80px;
+                left: 9px;
+                position: absolute;
+                }
+                .p-accordion-header{
+                    width:100px; 
+                }
+                
+            }
+       
+
+        .specialFilter{
+            .p-accordion-header-link{
+                width:120px; 
+                padding: 7px 12px !important;
+                font-size: $f13;      
+                top: 33px;
+                left: 123px;
+                position: absolute;
+               
+                }
+
+                .p-accordion-header{
+                    width:120px; 
+                }
+              
+            }
+        }
+    .poscss{
+        position: relative;
+        left:0px;
+        font-size: $f13;
+        top: 0px;
+    }
+    .regposs{
+        position: relative;
+        left:0px;
+        font-size: $f13;
+        top: -12px;
+      
+    }
+
+}
+@media (min-width: 360px) {
+    .popupviewClaim::ng-deep{
+        .p-dialog{
+            width: 320px;
+        }
+    }
+
+    .poscss{
+        position: relative;
+        left:0px;
+        font-size: $f13;
+        top: 0px;
+        margin-bottom: 30px;
+    }
+    .regposs{
+        position: relative;
+        left:-110px;
+        font-size: $f13;
+        top: 39px;
+        margin-bottom: 30px;
+      
+    }
+}
+@media (min-width: 375px) {}
+@media (min-width: 414px) {
+    .popupviewClaim::ng-deep{
+        .p-dialog{
+            width: 350px;
+        }
+    }
+}
+@media (min-width: 480px) {}
+@media (min-width: 568px) {
+    .marT20{
+        margin-top: 20px;
+    }
+    
+    :host::ng-deep{
+        .dataFilter{
+            .p-accordion-header-link{                 
+                top: 32px;
+                left: 273px;
+                }
+                .p-accordion-header{
+                    width:100px; 
+                }
+            }
+       
+
+        .specialFilter{
+            .p-accordion-header-link{                 
+                top: 33px;
+                left: 118px;
+                }
+
+                .p-accordion-header{
+                    width:120px; 
+                }
+            }
+            .regposs{
+                position: relative;
+                left:126px;
+                font-size: $f13;
+                top: 0px;
+                margin-bottom: 30px;
+              
+            }
+        }
+}
+@media (min-width: 640px) {}
+@media (min-width: 667px) {}
+@media (min-width: 736px) {
+    .popupviewClaim::ng-deep{
+        .p-dialog{
+            width: 450px;
+        }
+    }
+}
+@media (min-width: 768px) {
+    
+}
+@media (min-width: 769px) {}
+@media (min-width: 991px) {}
+@media (min-width: 1024px) {}
+@media (min-width: 1200px) {}
+@media (min-width: 1366px) {
+    :host::ng-deep{
+        .dataFilter{
+            .p-accordion-header-link{
+                width:120px; 
+                padding: 9px 12px !important;
+                font-size: $f18;      
+                top: 31px;
+                left: 347px;
+                position: absolute;
+                }
+                .p-accordion-header{
+                    width:120px; 
+                }
+            }
+       
+
+        .specialFilter{
+            .p-accordion-header-link{
+                width:140px; 
+                padding: 9px 12px !important;
+                font-size: $f18;      
+                top: 32px;
+                left: 148px;
+                }
+
+                .p-accordion-header{
+                    width:140px; 
+                }
+            }
+        }
+    
+
+    .poscss{
+        position: relative;
+        left:0px;
+        font-size: $f18;
+        top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .regposs{
+        position: relative;
+        left:148px;
+        font-size: $f18;
+        top: 0px;
+        margin-bottom: 0px;
+    }
+}
+@media (min-width: 1440px) {
+
+    :host::ng-deep{
+        .dataFilter{
+            .p-accordion-header-link{
+                width:120px; 
+                padding: 9px 12px !important;
+                font-size: $f18;      
+                top: 31px;
+                left: 347px;
+                position: absolute;
+                }
+                .p-accordion-header{
+                    width:120px; 
+                }
+            }
+       
+
+        .specialFilter{
+            .p-accordion-header-link{
+                width:140px; 
+                padding: 9px 12px !important;
+                font-size: $f18;      
+                top: 32px;
+                left: 355px;
+                }
+
+                .p-accordion-header{
+                    width:140px; 
+                }
+            }
+        }
+    
+
+    .poscss{
+        position: relative;
+        left:0px;
+        font-size: $f18;
+        top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .regposs{
+        position: relative;
+        left:4px;
+        font-size: $f18;
+        top: 0px;
+        margin-bottom: 0px;
+    }
+}
+@media (min-width: 1600px) {}
+@media (min-width: 1920px) {}

@@ -1,0 +1,45 @@
+<div class="p-fluid claimModule">
+    <mat-toolbar>
+        <div class="p-col p-p-0 p-d-flex p-jc-start" style="align-self: center;">
+            <!-- <img src="./../../../../assets/images/logo-sm.png" class="logo" alt="logo" /> -->
+            <img src="{{imageLogo}}" class="logo" alt="logo" />
+            <span class="moduleHeader">CLAIM
+                MODULE</span>
+        </div><span class="menu-spacer"></span>
+        <div class="p-col p-p-0 p-d-flex p-jc-end" style="align-items: center;">
+            <div fxShow="true" fxHide.lt-md>
+                <div class="p-col p-p-0 p-d-flex p-jc-end" style="align-items: center;">
+                    <ngx-avatar class="toolbarAvatar"  name="Srivalli Gunturu" src="assets/images/test.png" (click)="profileMenu.toggle($event)"></ngx-avatar>
+                    <p-menu #profileMenu [popup]="true" [model]="settingsMenu"></p-menu>
+                </div>
+            </div>
+            <a mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+                <mat-icon class="hamburger">menu</mat-icon>
+            </a>
+        </div>
+    </mat-toolbar>
+    <div class="page-wrapper-img">
+        <div class="p-fluid">
+
+        </div>
+    </div>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav>
+            <p-panelMenu [model]="mobileItems"></p-panelMenu>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <p-card class="menuCard">
+                <div class="p-fluid">
+                    <div fxShow="true" fxHide.lt-md>
+                        <p-megaMenu [model]="items"></p-megaMenu>
+                    </div>
+                </div>
+            </p-card>
+            <div class="p-fluid">
+                <div class="pageWrapper">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
